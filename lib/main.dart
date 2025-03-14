@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smart_health_reminder_demo/providers/ThemeProvider.dart';
 import 'package:smart_health_reminder_demo/providers/gamification_provider.dart';
 import 'package:smart_health_reminder_demo/providers/health_provider.dart';
 import 'package:smart_health_reminder_demo/providers/reminder_provider.dart';
@@ -19,22 +20,50 @@ void main() async {
         ChangeNotifierProvider(create: (_) => HealthProvider(prefs)),
         ChangeNotifierProvider(create: (_) => GamificationProvider(prefs)),
         ChangeNotifierProvider(create: (_) => ReminderProvider(prefs)),
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
       ],
       child: const MyApp(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  bool darkModeEnabled = false;
+  bool isDarkModeSet = false;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _loadThemePreference();
+  }
+
+  void _loadThemePreference() async {
+    final SharedPreferences prefs = await _prefs;
+    isDarkModeSet = prefs.containsKey('darkMode');
+
+    setState(() {
+      darkModeEnabled = prefs.getBool('darkMode') ?? false;
+    });
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Smart Health Reminder',
-      theme: AppTheme.lightTheme,
+      theme: Provider.of<ThemeProvider>(context).themeData,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: (isDarkModeSet) ? (darkModeEnabled ? ThemeMode.dark : ThemeMode.light) : ThemeMode.system,
       debugShowCheckedModeBanner: false,
       home: const HomeScreen(),
     );

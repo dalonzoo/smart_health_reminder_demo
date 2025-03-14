@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
+import '../../providers/ThemeProvider.dart';
 import '../../providers/auth_provider.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -16,9 +18,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
   bool _darkModeEnabled = false;
   String _reminderFrequency = 'Hourly';
   bool _isLoading = false;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+  }
+
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    setState(() {
+      _darkModeEnabled = Theme.of(context).brightness == Brightness.dark;
+    });
+  }
+  @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
@@ -81,6 +101,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
               setState(() {
                 _darkModeEnabled = value;
               });
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+              _saveThemePreference(value);
               // In a real app, this would update the theme
             },
             secondary: Container(
@@ -190,6 +212,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
     );
   }
+
+
+  void _saveThemePreference(bool isDarkMode) async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setBool('darkMode', isDarkMode);
+  }
+
+
+
 
   Widget _buildSectionHeader(String title) {
     return Padding(
