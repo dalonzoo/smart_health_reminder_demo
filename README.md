@@ -17,7 +17,9 @@ Smart Health Reminder & Gamification App with Ultimate Alarm Clock Integration
 Abstract
 
 This project aims to develop a Flutter-based health and wellness app that combines:
-✔️ Smart reminders for hydration, posture, exercise, and meditation✔️ Gamification (points, achievements, challenges, leaderboards)✔️ Ultimate Alarm Clock Integration for shared alarms and sleep-based wake-upsBy making health habits engaging and easy to follow, the app encourages users to stay consistent with their well-being.
+✔️ Smart reminders for hydration, posture, exercise, and meditation
+✔️ Gamification (points, achievements, challenges, leaderboards)
+✔️ Ultimate Alarm Clock Integration for shared alarms and sleep-based wake-upsBy making health habits engaging and easy to follow, the app encourages users to stay consistent with their well-being.
 
 Why This Project?
 
