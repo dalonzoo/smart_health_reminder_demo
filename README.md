@@ -69,10 +69,9 @@ Presentation Layer: UI Screens (Home, Reminders, Achievements, Challenges, Profi
 <img src="assets/fonts/Screenshot_6.png" width="300">
 
 ### Dark mode feature
-<video width="400" controls>
-  <source src="assets/fonts/Screen_recording_smarth_health.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/7eba3fa0-d3a7-40c5-8c61-9fbe8eedf45a
+
+
 
 
 📅 Implementation Plan
