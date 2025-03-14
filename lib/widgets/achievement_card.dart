@@ -13,6 +13,8 @@ class AchievementCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Card(
       elevation: isLocked ? 0 : 2,
       color: isLocked ? Colors.grey[200] : null,

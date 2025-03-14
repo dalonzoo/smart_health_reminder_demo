@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_health_reminder_demo/models/achievement.dart';
+import 'package:smart_health_reminder_demo/providers/gamification_provider.dart';
 
 import '../models/reminder.dart';
+import '../providers/reminder_provider.dart';
 
-class NextReminderCard extends StatelessWidget {
+class NextReminderCard extends StatefulWidget {
   final Reminder? reminder;
+  final VoidCallback? onComplete;
 
-  const NextReminderCard({Key? key, this.reminder}) : super(key: key);
+  const NextReminderCard({Key? key, this.reminder,this.onComplete}) : super(key: key);
 
   @override
+  _NextReminderCardState createState() => _NextReminderCardState();
+}
+
+class _NextReminderCardState extends State<NextReminderCard> {
+  @override
   Widget build(BuildContext context) {
+    final gamificationProvider = Provider.of<GamificationProvider>(context);
+    final reminderProvider = Provider.of<ReminderProvider>(context);
+    Reminder? reminder = widget.reminder;
+
     if (reminder == null) {
       return Card(
         child: Padding(
@@ -48,12 +62,12 @@ class NextReminderCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: _getReminderColor(reminder!.type).withOpacity(0.2),
+                    color: _getReminderColor(reminder.type).withOpacity(0.2),
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Icon(
-                    _getReminderIcon(reminder!.type),
-                    color: _getReminderColor(reminder!.type),
+                    _getReminderIcon(reminder.type),
+                    color: _getReminderColor(reminder.type),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -62,14 +76,14 @@ class NextReminderCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        reminder!.title,
+                        reminder.title,
                         style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        reminder!.description,
+                        reminder.description,
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey[600],
@@ -89,7 +103,7 @@ class NextReminderCard extends StatelessWidget {
                     const Icon(Icons.access_time, size: 16),
                     const SizedBox(width: 4),
                     Text(
-                      reminder!.time.format(context),
+                      reminder.time.format(context),
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -102,7 +116,7 @@ class NextReminderCard extends StatelessWidget {
                     const Icon(Icons.repeat, size: 16),
                     const SizedBox(width: 4),
                     Text(
-                      _getFrequencyText(reminder!.frequency),
+                      _getFrequencyText(reminder.frequency),
                       style: const TextStyle(
                         fontSize: 14,
                       ),
@@ -111,11 +125,16 @@ class NextReminderCard extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Handle reminder action
-
+                    setState(() {
+                      reminderProvider.getNextReminder();
+                    });
+                    if (widget.onComplete != null) {
+                      reminderProvider.deleteReminder(reminder.id);
+                      widget.onComplete!();
+                    }
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: _getReminderColor(reminder!.type),
+                    backgroundColor: _getReminderColor(reminder.type),
                     foregroundColor: Colors.white,
                   ),
                   child: const Text('Complete'),
@@ -171,4 +190,3 @@ class NextReminderCard extends StatelessWidget {
     }
   }
 }
-

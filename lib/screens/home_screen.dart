@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:smart_health_reminder_demo/screens/profile_screen.dart';
 import 'package:smart_health_reminder_demo/screens/reminders_screen.dart';
 
+import '../models/reminder.dart';
 import '../providers/gamification_provider.dart';
 import '../providers/health_provider.dart';
 import '../providers/reminder_provider.dart';
@@ -13,7 +14,6 @@ import '../widgets/next_reminder_card.dart';
 import 'achievements_screen.dart';
 import 'challenges_screen.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -23,7 +23,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  
+
+
   final List<Widget> _screens = [
     const _HomeTab(),
     const RemindersScreen(),
@@ -34,6 +35,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavigationBar(
@@ -76,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class _HomeTab extends StatelessWidget {
+
   const _HomeTab({Key? key}) : super(key: key);
 
   @override
@@ -83,7 +87,7 @@ class _HomeTab extends StatelessWidget {
     final healthProvider = Provider.of<HealthProvider>(context);
     final gamificationProvider = Provider.of<GamificationProvider>(context);
     final reminderProvider = Provider.of<ReminderProvider>(context);
-    
+    Reminder? nextReminder = reminderProvider.getNextReminder();
     return SafeArea(
       child: CustomScrollView(
         slivers: [
@@ -149,7 +153,7 @@ class _HomeTab extends StatelessWidget {
                       ),
                     ],
                   ),
-                  
+
                   const SizedBox(height: 24),
                   const Text(
                     'Today\'s Health Summary',
@@ -170,8 +174,12 @@ class _HomeTab extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  NextReminderCard(reminder: reminderProvider.getNextReminder()),
-                  
+                  NextReminderCard(reminder: nextReminder,
+                    onComplete: () {
+                    print("completato");
+                      nextReminder = reminderProvider.getNextReminder();
+                    },),
+
                   const SizedBox(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -199,11 +207,12 @@ class _HomeTab extends StatelessWidget {
                     height: 160,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: gamificationProvider.unlockedAchievements.length > 0 
-                          ? gamificationProvider.unlockedAchievements.length 
+                      itemCount: gamificationProvider.unlockedAchievements.length > 0
+                          ? gamificationProvider.unlockedAchievements.length
                           : 1,
                       itemBuilder: (context, index) {
                         if (gamificationProvider.unlockedAchievements.isEmpty) {
+                          print("lista vuota");
                           return const SizedBox(
                             width: 300,
                             child: Card(
@@ -216,6 +225,7 @@ class _HomeTab extends StatelessWidget {
                             ),
                           );
                         }
+                        print("lista non  vuota");
                         return Padding(
                           padding: const EdgeInsets.only(right: 12),
                           child: SizedBox(
@@ -228,7 +238,7 @@ class _HomeTab extends StatelessWidget {
                       },
                     ),
                   ),
-                  
+
                   const SizedBox(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -256,8 +266,8 @@ class _HomeTab extends StatelessWidget {
                     height: 180,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: gamificationProvider.challenges.length > 0 
-                          ? gamificationProvider.challenges.length 
+                      itemCount: gamificationProvider.challenges.length > 0
+                          ? gamificationProvider.challenges.length
                           : 1,
                       itemBuilder: (context, index) {
                         if (gamificationProvider.challenges.isEmpty) {
@@ -294,4 +304,3 @@ class _HomeTab extends StatelessWidget {
     );
   }
 }
-

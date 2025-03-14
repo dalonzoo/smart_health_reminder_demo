@@ -100,8 +100,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onChanged: (value) {
               setState(() {
                 _darkModeEnabled = value;
+                Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
               });
-              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+
               _saveThemePreference(value);
               // In a real app, this would update the theme
             },

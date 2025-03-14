@@ -52,6 +52,12 @@ class _MyAppState extends State<MyApp> {
 
     setState(() {
       darkModeEnabled = prefs.getBool('darkMode') ?? false;
+
+      if(isDarkModeSet){
+        if(darkModeEnabled) {
+          Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
+        }
+      }
     });
 
 
@@ -63,7 +69,6 @@ class _MyAppState extends State<MyApp> {
       title: 'Smart Health Reminder',
       theme: Provider.of<ThemeProvider>(context).themeData,
       darkTheme: AppTheme.darkTheme,
-      themeMode: (isDarkModeSet) ? (darkModeEnabled ? ThemeMode.dark : ThemeMode.light) : ThemeMode.system,
       debugShowCheckedModeBanner: false,
       home: const HomeScreen(),
     );
