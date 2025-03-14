@@ -51,13 +51,23 @@ Presentation Layer: UI Screens (Home, Reminders, Achievements, Challenges, Profi
 ## Screenshots
 
 ### Home Screen
-![Home Screen](assets/fonts/Screenshot_1.png)
+<img src="assets/fonts/Screenshot_1.png" width="300">
 
-### Reminder Setup
-![Reminder Setup](assets/Screenshot_2.png)
+### Achievements and challenges
+<img src="assets/fonts/Screenshot_2.png" width="300">
 
-### Gamification Progress
-![Gamification Progress](assets/fonts/Screenshot_3.png)
+### Gamification Progress 1
+<img src="assets/fonts/Screenshot_3.png" width="300">
+
+### Gamification Progress 2
+<img src="assets/fonts/Screenshot_4.png" width="300">
+
+### Task stats 1
+<img src="assets/fonts/Screenshot_5.png" width="300">
+
+### Task stats 2
+<img src="assets/fonts/Screenshot_6.png" width="300">
+
 
 
 📅 Implementation Plan
