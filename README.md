@@ -21,6 +21,7 @@ This project aims to develop a Flutter-based health and wellness app that combin
 ✔️ Gamification (points, achievements, challenges, leaderboards)
 ✔️ Ultimate Alarm Clock Integration for shared alarms and sleep-based wake-upsBy making health habits engaging and easy to follow, the app encourages users to stay consistent with their well-being.
 
+
 Why This Project?
 
 People struggle to maintain healthy routines due to busy schedules and lack of motivation.
@@ -46,6 +47,18 @@ Presentation Layer: UI Screens (Home, Reminders, Achievements, Challenges, Profi
 📜 Core Features
 
 ✅ User Authentication: Secure login, health metrics calculation (BMI, calories).✅ Health Tracking: Water intake, step counting, guided meditation, posture checks.✅ Gamification: Points system, achievements, challenges, leaderboards.✅ Smart Reminders: Custom schedules, intelligent notifications.✅ Ultimate Alarm Clock Integration: Shared alarms, sleep-quality-based wake-ups.✅ AI Integration (Planned): Personalized recommendations, NLP for user input, health pattern insights.
+
+## Screenshots
+
+### Home Screen
+![Home Screen](lib/assets/Screenshot_1.png)
+
+### Reminder Setup
+![Reminder Setup](lib/assets/Screenshot_2.png)
+
+### Gamification Progress
+![Gamification Progress](assets/screenshots/gamification_progress.png)
+
 
 📅 Implementation Plan
 
