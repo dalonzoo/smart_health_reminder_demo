@@ -12,7 +12,7 @@ Time Zone: Central European Standard Time
 
 Project Title
 
-Smart Health Reminder & Gamification App with Ultimate Alarm Clock Integration
+Smart Health Reminder & Gamification App
 
 Abstract
 
