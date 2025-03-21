@@ -12,7 +12,7 @@ Time Zone: Central European Standard Time
 
 Project Title
 
-Smart Health Reminder & Gamification App with Ultimate Alarm Clock Integration
+Smart Health Reminder & Gamification App
 
 Abstract
 
@@ -20,6 +20,7 @@ This project aims to develop a Flutter-based health and wellness app that combin
 ✔️ Smart reminders for hydration, posture, exercise, and meditation
 ✔️ Gamification (points, achievements, challenges, leaderboards)
 ✔️ Ultimate Alarm Clock Integration for shared alarms and sleep-based wake-upsBy making health habits engaging and easy to follow, the app encourages users to stay consistent with their well-being.
+
 
 Why This Project?
 
@@ -46,6 +47,32 @@ Presentation Layer: UI Screens (Home, Reminders, Achievements, Challenges, Profi
 📜 Core Features
 
 ✅ User Authentication: Secure login, health metrics calculation (BMI, calories).✅ Health Tracking: Water intake, step counting, guided meditation, posture checks.✅ Gamification: Points system, achievements, challenges, leaderboards.✅ Smart Reminders: Custom schedules, intelligent notifications.✅ Ultimate Alarm Clock Integration: Shared alarms, sleep-quality-based wake-ups.✅ AI Integration (Planned): Personalized recommendations, NLP for user input, health pattern insights.
+
+## Screenshots
+
+### Home Screen
+<img src="assets/fonts/Screenshot_1.png" width="300">
+
+### Achievements and challenges
+<img src="assets/fonts/Screenshot_2.png" width="300">
+
+### Gamification Progress 1
+<img src="assets/fonts/Screenshot_3.png" width="300">
+
+### Gamification Progress 2
+<img src="assets/fonts/Screenshot_4.png" width="300">
+
+### Task stats 1
+<img src="assets/fonts/Screenshot_5.png" width="300">
+
+### Task stats 2
+<img src="assets/fonts/Screenshot_6.png" width="300">
+
+### Dark mode feature
+https://github.com/user-attachments/assets/7eba3fa0-d3a7-40c5-8c61-9fbe8eedf45a
+
+
+
 
 📅 Implementation Plan
 
