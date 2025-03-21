@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_health_reminder_demo/screens/profile_screen.dart';
 import 'package:smart_health_reminder_demo/screens/reminders_screen.dart';
+import 'package:smart_health_reminder_demo/screens/voice_input_screen.dart';
 
 import '../models/reminder.dart';
 import '../providers/gamification_provider.dart';
@@ -38,6 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const VoiceInputScreen()),
+          );
+        },
+        child: const Icon(Icons.mic),
+        tooltip: 'Voice Assistant',
+      ),
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,

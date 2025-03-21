@@ -7,8 +7,17 @@ import '../providers/reminder_provider.dart';
 
 class AddReminderScreen extends StatefulWidget {
   final Reminder? reminder;
+  final int? initialType;
+  final int? initialFrequency;
+  final String? initialTimeString;
 
-  const AddReminderScreen({Key? key, this.reminder}) : super(key: key);
+  const AddReminderScreen({
+    Key? key,
+    this.reminder,
+    this.initialType,
+    this.initialFrequency,
+    this.initialTimeString,
+  }) : super(key: key);
 
   @override
   State<AddReminderScreen> createState() => _AddReminderScreenState();

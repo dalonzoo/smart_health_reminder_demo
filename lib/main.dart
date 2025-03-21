@@ -41,7 +41,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _loadThemePreference();
   }
@@ -50,17 +49,14 @@ class _MyAppState extends State<MyApp> {
     final SharedPreferences prefs = await _prefs;
     isDarkModeSet = prefs.containsKey('darkMode');
 
-    setState(() {
+    if (isDarkModeSet) {
       darkModeEnabled = prefs.getBool('darkMode') ?? false;
-
-      if(isDarkModeSet){
-        if(darkModeEnabled) {
-          Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
-        }
+      if (darkModeEnabled) {
+        Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
       }
-    });
+    }
 
-
+    setState(() {});
   }
 
   @override

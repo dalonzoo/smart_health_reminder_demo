@@ -1,8 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
     <application
+
         android:label="smart_health_reminder_demo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="flutter.Impeller" android:value="false"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

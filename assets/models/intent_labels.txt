@@ -1,0 +1,14 @@
+add_water
+query_water
+check_posture
+query_posture
+create_reminder
+list_reminders
+query_achievements
+query_challenges
+query_points
+query_summary
+add_steps
+query_steps
+start_meditation
+query_meditation
