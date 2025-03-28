@@ -10,8 +10,6 @@ Time Zone: Central European Standard Time
 
 🚀 Project Overview
 
-Project Title
-
 Smart Health Reminder & Gamification App
 
 Abstract
